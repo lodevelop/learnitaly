@@ -4,9 +4,9 @@ plugins {
     id 'com.android.application'
 }
 
-// v5.4.0: keep a normal local fallback code, but allow Codemagic to inject a
+// v5.4.1: keep a normal local fallback code, but allow Codemagic to inject a
 // monotonically increasing versionCode for every signed build.
-def defaultVersionCode = 88
+def defaultVersionCode = 89
 def resolvedVersionCode = project.hasProperty('versionCode')
         ? project.property('versionCode').toString().toInteger()
         : defaultVersionCode
@@ -41,7 +41,7 @@ android {
         minSdk 26
         targetSdk 35
         versionCode resolvedVersionCode
-        versionName '5.4.0-native'
+        versionName '5.4.1-native'
     }
 
     signingConfigs {

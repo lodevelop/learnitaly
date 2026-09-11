@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 gate: audit fixed-course ownership, one-pass exposure balance and answer ambiguity."""
+"""v5.4.1 gate: audit fixed-course ownership, one-pass exposure balance and answer ambiguity."""
 from pathlib import Path
 import argparse, collections, json, re, sys
 
@@ -154,7 +154,7 @@ if 'repo.all()' in '\n'.join(line for line in engine.splitlines() if 'Options' i
 
 counts=collections.Counter(exposure.values())
 report_lines=[
-    '终学意语 v5.4.0 全课程词汇分布审计报告',
+    '终学意语 v5.4.1 全课程词汇分布审计报告',
     '========================================',
     f'固定单元：{len(units)}',
     f'课程词：{len(words)}（静态归属 {assignments}，唯一归属 {len(owners)}）',
@@ -177,7 +177,7 @@ report_lines=[
 
 parser=argparse.ArgumentParser(add_help=False);parser.add_argument('--write-report',action='store_true');args,_=parser.parse_known_args()
 if args.write_report:
-    (ROOT/'全课程词汇分布审计报告_v5.4.0.txt').write_text('\n'.join(report_lines)+'\n',encoding='utf-8')
+    (ROOT/'全课程词汇分布审计报告_v5.4.1.txt').write_text('\n'.join(report_lines)+'\n',encoding='utf-8')
 
 if errors:
     for x in errors: print('ERROR:',x)

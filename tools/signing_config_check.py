@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 permanent Android signing/update-chain configuration gate."""
+"""v5.4.1 permanent Android signing/update-chain configuration gate."""
 from pathlib import Path
 import re, sys
 
@@ -31,8 +31,8 @@ if fingerprint and fingerprint not in cm and 'signing-certificate-sha256.txt' no
 # Identity and version chain.
 for needle,msg in [
     ("applicationId 'com.italiano2774.nativeapp'", 'applicationId must remain com.italiano2774.nativeapp'),
-    ('def defaultVersionCode = 88', 'v5.4.0 local fallback versionCode must be 84'),
-    ("versionName '5.4.0-native'", 'versionName must be 5.2.0-native'),
+    ('def defaultVersionCode = 89', 'v5.4.1 local fallback versionCode must be 84'),
+    ("versionName '5.4.1-native'", 'versionName must be 5.2.0-native'),
     ('versionCode resolvedVersionCode', 'Gradle versionCode override support missing'),
 ]:
     if needle not in build: err(msg)
@@ -61,7 +61,7 @@ for needle,msg in [
     if needle not in cm: err(msg)
 
 if ':app:assembleDebug' in cm or 'app-debug.apk' in cm:
-    err('official Codemagic workflow still builds/exports debug APK; v5.4.0 must use signed release APK')
+    err('official Codemagic workflow still builds/exports debug APK; v5.4.1 must use signed release APK')
 
 # Repository hygiene: private keys must never be inside the GitHub project.
 if gitignore_path.exists():

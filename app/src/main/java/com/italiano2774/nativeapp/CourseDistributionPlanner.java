@@ -66,7 +66,8 @@ public final class CourseDistributionPlanner {
                 // Never reinforce before introduction and normally keep a one-lesson gap.
                 if(first>=0&&first<=lesson-2)eligible.add(wid);
             }
-            Collections.sort(eligible,Comparator.comparingLong(wid->stableScore(unit,lesson,wid)));
+            final int currentLesson=lesson;
+            Collections.sort(eligible,Comparator.comparingLong(wid->stableScore(unit,currentLesson,wid)));
             List<Integer> chosen=new ArrayList<>();
             for(Integer wid:eligible){
                 chosen.add(wid);alreadyReviewed.add(wid);

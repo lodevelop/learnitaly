@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 six-skill mastery passport + internal stage checkpoint gate."""
+"""v5.4.1 six-skill mastery passport + internal stage checkpoint gate."""
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -32,9 +32,9 @@ if 'button_profile_passport' not in profile or 'openMasteryPassport' not in prof
 if 'button_summary_passport' not in summary or 'openMasteryPassport' not in summary or 'button_summary_passport' not in summary_xml: err('Daily summary passport entry missing')
 exam=text('app/src/main/java/com/italiano2774/nativeapp/LevelExamFragment.java'); exam_xml=text('app/src/main/res/layout/fragment_level_exam.xml')
 if 'button_exam_passport' not in exam or 'openMasteryPassport' not in exam or 'button_exam_passport' not in exam_xml: err('Level exam passport close-loop missing')
-if "versionName '5.4.0-native'" not in build or 'def defaultVersionCode = 88' not in build: err('v5.4.0 version identity missing')
-if '5.4.0-preupgrade' not in main: err('v5.4.0 pre-upgrade backup marker missing')
-if 'v5.4.0' not in cm or 'python3 tools/mastery_passport_quality_check.py' not in cm: err('Codemagic mastery passport gate missing')
+if "versionName '5.4.1-native'" not in build or 'def defaultVersionCode = 89' not in build: err('v5.4.1 version identity missing')
+if '5.4.1-preupgrade' not in main: err('v5.4.1 pre-upgrade backup marker missing')
+if 'v5.4.1' not in cm or 'python3 tools/mastery_passport_quality_check.py' not in cm: err('Codemagic mastery passport gate missing')
 if '不是官方CEFR考试或证书结论' not in layout: err('user-facing CEFR disclaimer missing')
 
 if errors:

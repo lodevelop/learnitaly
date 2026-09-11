@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 gate: English UI must render whole sentences, never Chinese/English fragment soup."""
+"""v5.4.1 gate: English UI must render whole sentences, never Chinese/English fragment soup."""
 from pathlib import Path
 import subprocess, tempfile, shutil, sys, textwrap
 ROOT=Path(__file__).resolve().parents[1]

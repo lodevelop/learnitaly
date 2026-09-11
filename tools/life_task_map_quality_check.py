@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 real-life task map integration gate."""
+"""v5.4.1 real-life task map integration gate."""
 from pathlib import Path
 import json,sys,re
 ROOT=Path(__file__).resolve().parents[1]
@@ -18,7 +18,7 @@ for token in ['clothing_store','post_office','bar_restaurant','supermarket','tra
     need(repo,token,'12 unique real-life scenario mapping')
 for token in ['passLine(int level)','level<=1?80:(level==2?75:70)','completedStages(ProgressStore p)','masteredTasks(ProgressStore p)','nextTask(ProgressStore p)','unlocked(ProgressStore p,LifeTask task,int level)']:
     need(engine,token,'36-stage progression engine')
-for token in ['openLifeTaskMap','openLifeTask(String taskId)','openLifeTaskStage(String taskId,int level)','终学意语_backup_v5_0.json','5.4.0-preupgrade']:
+for token in ['openLifeTaskMap','openLifeTask(String taskId)','openLifeTaskStage(String taskId,int level)','终学意语_backup_v5_0.json','5.4.1-preupgrade']:
     need(main,token,'navigation/upgrade backup')
 for token in ['newInstance(String id,int level,String lifeTaskId)','LifeTaskEngine.passLine(currentLevel)','recordAuxiliaryResult("life_task"','openLifeTask(lifeTaskId)']:
     need(dialogue,token,'three-level task launch/result bridge')
@@ -33,7 +33,7 @@ for token in ['LifeTaskEngine.nextTask(progress)','"life_task"','LifeTaskEngine.
     need(plan,token,'daily planner task-map scheduling')
 need(bt,'"life_task"','three-day real-use prescription uses task map');need(course,'case "life_task"','daily-plan action route');need(passport,'"life_task"','mastery passport real-use evidence')
 need(store,'o.put("version",32)','backup schema v32');need(store,'"dialogue_scenario","life_task","freechat"','life-task aux backup')
-need(build,'def defaultVersionCode = 88','v4.8 versionCode');need(build,"versionName '5.4.0-native'",'v4.8 versionName')
+need(build,'def defaultVersionCode = 89','v4.8 versionCode');need(build,"versionName '5.4.1-native'",'v4.8 versionName')
 sc=json.loads(read('app/src/main/assets/scenarios.json'));dg=json.loads(read('app/src/main/assets/dialogues.json'))
 if len(sc)!=12 or len(dg)!=12: err(f'expected 12 reviewed scenario assets and dialogues, got {len(sc)}/{len(dg)}')
 ids={x.get('id') for x in sc};dids={x.get('id') for x in dg}

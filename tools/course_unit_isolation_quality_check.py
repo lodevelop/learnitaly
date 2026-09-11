@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 gate: fixed course units must not be polluted by cross-unit due-review targets."""
+"""v5.4.1 gate: fixed course units must not be polluted by cross-unit due-review targets."""
 from pathlib import Path
 import json, sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -51,7 +51,7 @@ if 'addSeenReinforcement' not in engine:
 if 'reviewDue(' in engine or 'addDueReview' in engine:
     err('CourseLessonEngine still injects global due reviews into fixed units')
 if 'global due reviews must stay in the' not in engine.lower():
-    err('v5.4.0 course isolation maintenance guard/comment missing')
+    err('v5.4.1 course isolation maintenance guard/comment missing')
 # Global due review itself must still exist for dedicated review/smart-plan routes.
 if 'List<Word> reviewDue' not in word_repo:
     err('global reviewDue route was removed; reviews must be moved out of course, not deleted')

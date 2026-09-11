@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 gate for the integrated listening + speaking bridge."""
+"""v5.4.1 gate for the integrated listening + speaking bridge."""
 from pathlib import Path
 import re, sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -33,7 +33,7 @@ manifest=(ROOT/'app/src/main/AndroidManifest.xml').read_text(encoding='utf-8')
 if 'android.permission.RECORD_AUDIO' not in manifest: errors.append('RECORD_AUDIO permission missing')
 if 'android.speech.RecognitionService' not in manifest: errors.append('speech recognition query missing')
 build=(ROOT/'app/build.gradle').read_text(encoding='utf-8')
-if 'def defaultVersionCode = 88' not in build or "versionName '5.4.0-native'" not in build: errors.append('v5.4.0 version identity missing')
+if 'def defaultVersionCode = 89' not in build or "versionName '5.4.1-native'" not in build: errors.append('v5.4.1 version identity missing')
 if errors:
     for e in errors: print('ERROR:',e)
     sys.exit(1)

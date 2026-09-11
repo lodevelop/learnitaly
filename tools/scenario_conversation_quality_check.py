@@ -51,7 +51,7 @@ practice=read(Path('app/src/main/java/com/italiano2774/nativeapp/PracticeHubFrag
 if 'button_simple_scenarios' not in practice or 'openScenarios()' not in practice: err('real-life scenario entry is not beginner-visible')
 
 build=read(Path('app/build.gradle'))
-if 'def defaultVersionCode = 88' not in build or "versionName '5.4.0-native'" not in build: err('v5.4.0 version identity missing')
+if 'def defaultVersionCode = 89' not in build or "versionName '5.4.1-native'" not in build: err('v5.4.1 version identity missing')
 progress=read(Path('app/src/main/java/com/italiano2774/nativeapp/ProgressStore.java'))
 for token in ['dialogueScenarioCompleted(String id,int level)','dialogueScenarioBestScore(String id,int level)','dialogueScenarioRecommendedLevel','dialogueDifficultyKey','dialogueScenarioProgress','dialogue_scenario']:
     if token not in progress: err('ProgressStore missing '+token)

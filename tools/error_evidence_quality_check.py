@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 personal wrong-sentence queue isolation and repair-loop quality gate."""
+"""v5.4.1 personal wrong-sentence queue isolation and repair-loop quality gate."""
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -13,8 +13,8 @@ def read(path):
 def need(text,marker,label):
     if marker not in text: errors.append(label+' missing '+marker)
 
-build=read('app/build.gradle');need(build,"versionName '5.4.0-native'",'version');need(build,'def defaultVersionCode = 88','version')
-main=read('app/src/main/java/com/italiano2774/nativeapp/MainActivity.java');need(main,'5.4.0-preupgrade','upgrade backup');need(main,'openErrorEvidenceRepair','navigation');need(main,'unresolvedPracticeErrorCount','pending-error reconciliation')
+build=read('app/build.gradle');need(build,"versionName '5.4.1-native'",'version');need(build,'def defaultVersionCode = 89','version')
+main=read('app/src/main/java/com/italiano2774/nativeapp/MainActivity.java');need(main,'5.4.1-preupgrade','upgrade backup');need(main,'openErrorEvidenceRepair','navigation');need(main,'unresolvedPracticeErrorCount','pending-error reconciliation')
 policy=read('app/src/main/java/com/italiano2774/nativeapp/ErrorEvidencePolicy.java')
 for m in ['isRepairEligible','listen_speak_output','weekly_exam_output','modeLabel','attemptText','cleanDetail'] : need(policy,m,'error evidence policy')
 need(main,'ReminderScheduler.createChannel(this);reconcilePendingErrorRepairs();','startup queue reconciliation')
@@ -44,7 +44,7 @@ need(course,'"course",q.answer,actual','course analytics mode')
 if 'course_v334' in course: errors.append('raw legacy course_v334 mode still emitted')
 listen=read('app/src/main/java/com/italiano2774/nativeapp/ListeningSpeakingFragment.java');need(listen,'"listen_speak_output"','sentence-output mode')
 weekly=read('app/src/main/java/com/italiano2774/nativeapp/WeeklyExamFragment.java');need(weekly,'"weekly_exam_output"','weekly sentence-output mode')
-cm=read('codemagic.yaml');need(cm,'v5.4.0','Codemagic identity');need(cm,'python3 tools/error_evidence_quality_check.py','Codemagic gate')
+cm=read('codemagic.yaml');need(cm,'v5.4.1','Codemagic identity');need(cm,'python3 tools/error_evidence_quality_check.py','Codemagic gate')
 if errors:
     print('ERROR EVIDENCE QUALITY CHECK FAILED')
     for e in errors: print(' -',e)

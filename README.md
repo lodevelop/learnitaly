@@ -1,3 +1,13 @@
+# 终学意语 v5.4.1 编译修复
+
+修复 CourseDistributionPlanner.java 第69行 lambda 捕获循环变量 lesson 引起的 compileReleaseJavaWithJavac 失败。排序改为引用本轮 final currentLesson，不改变课程分配规则。
+
+验证：先使用真正的 Java 编译器复现用户给出的相同错误；修复后编译 CourseUnit 和 CourseDistributionPlanner 成功，并执行确定性排序、复习间隔、预算和挑战去重检查。新增 tools/course_planner_compile_check.py 已接入 Codemagic。49项项目检查全部通过。
+
+本地没有执行完整 Android Release 构建，需在 Codemagic 重新构建确认 APK 结果。包名和原固定签名配置保留，默认 versionCode 为89。将此完整项目解压到原仓库根目录，替换同名源码后提交；继续运行原 Codemagic 工作流。本次没有推送 GitHub。
+
+## 历史版本说明
+
 # 终学意语 v5.4.0
 
 基于 v5.3.0 完整项目继续优化。

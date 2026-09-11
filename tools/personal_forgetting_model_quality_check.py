@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 four-track personal forgetting model integration gate."""
+"""v5.4.1 four-track personal forgetting model integration gate."""
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -34,11 +34,11 @@ for token in ['button_profile_forgetting','openForgettingProfile']:
     need(profile+main,token,'profile navigation')
 for token in ['o.put("version",32)','dimensionSchedules','forgettingProfile','o.optJSONArray("dimensionSchedules")','o.optJSONObject("forgettingProfile")']:
     need(store,token,'backup v32')
-need(main,'5.4.0-preupgrade','upgrade snapshot')
+need(main,'5.4.1-preupgrade','upgrade snapshot')
 need(main,'终学意语_backup_v5_0.json','export filename')
-need(build,'def defaultVersionCode = 88','v4.9 versionCode')
-need(build,"versionName '5.4.0-native'",'v4.9 versionName')
-need(cm,'v5.4.0','Codemagic identity')
+need(build,'def defaultVersionCode = 89','v4.9 versionCode')
+need(build,"versionName '5.4.1-native'",'v4.9 versionName')
+need(cm,'v5.4.1','Codemagic identity')
 need(cm,'python3 tools/personal_forgetting_model_quality_check.py','Codemagic v4.9 gate')
 if errors:
     for e in errors: print('ERROR:',e)

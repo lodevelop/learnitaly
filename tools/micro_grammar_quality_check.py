@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 gate for the beginner-first micro-grammar route."""
+"""v5.4.1 gate for the beginner-first micro-grammar route."""
 from pathlib import Path
 import json, re, sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -40,7 +40,7 @@ for marker in ['newMicroInstance','microMode','微语法 · 3题实战','只学�
 today=text('app/src/main/java/com/italiano2774/nativeapp/TodayFragment.java')
 if 'case "grammar":a.openMicroGrammarLesson(n.payload);break;' not in today: err('daily path grammar node must open micro grammar lesson')
 build=text('app/build.gradle')
-if 'def defaultVersionCode = 88' not in build or "versionName '5.4.0-native'" not in build: err('v5.4.0 version identity missing')
+if 'def defaultVersionCode = 89' not in build or "versionName '5.4.1-native'" not in build: err('v5.4.1 version identity missing')
 if errors:
     print('Micro grammar quality check FAILED')
     for x in errors: print('ERROR:',x)

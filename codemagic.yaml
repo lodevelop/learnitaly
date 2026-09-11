@@ -1,6 +1,6 @@
 workflows:
   android-debug:
-    name: 终学意语 v5.4.0 做题体验与最近练习版 固定签名覆盖升级版 APK
+    name: 终学意语 v5.4.1 课程排序编译修复版 固定签名覆盖升级版 APK
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
@@ -104,6 +104,7 @@ workflows:
         script: |
           cd "$CM_BUILD_DIR"
           python3 tools/course_distribution_quality_check.py
+          python3 tools/course_planner_compile_check.py
 
       - name: 2000-word ten-article memory route checks
         script: |

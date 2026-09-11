@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 true three-day progressive prescription + persisted cycle gate."""
+"""v5.4.1 true three-day progressive prescription + persisted cycle gate."""
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -34,9 +34,9 @@ for marker in ['case "intensive_listening"','case "smart_cloze"','case "free_con
 for marker in ['openIntensiveListening','openSmartCloze','openFreeConversation','openWriting','setEnabled(!prescription.waitingForTomorrow&&!prescription.cycleComplete)']:
     if marker not in passport_ui and marker not in summary: err('prescription UI route/state missing '+marker)
 if 'BreakthroughPlanEngine.todayTask' not in daily: err('daily planner does not consume breakthrough cycle')
-if "versionName '5.4.0-native'" not in build or 'def defaultVersionCode = 88' not in build: err('v5.4.0 version identity missing')
-if '5.4.0-preupgrade' not in main: err('v5.4.0 pre-upgrade backup marker missing')
-if 'v5.4.0' not in cm or 'python3 tools/breakthrough_plan_quality_check.py' not in cm: err('Codemagic breakthrough gate missing')
+if "versionName '5.4.1-native'" not in build or 'def defaultVersionCode = 89' not in build: err('v5.4.1 version identity missing')
+if '5.4.1-preupgrade' not in main: err('v5.4.1 pre-upgrade backup marker missing')
+if 'v5.4.1' not in cm or 'python3 tools/breakthrough_plan_quality_check.py' not in cm: err('Codemagic breakthrough gate missing')
 
 if errors:
     for x in errors: print('ERROR:',x)

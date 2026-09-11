@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 daily smart-plan integration checks (stdlib only)."""
+"""v5.4.1 daily smart-plan integration checks (stdlib only)."""
 from pathlib import Path
 import re, sys, xml.etree.ElementTree as ET
 
@@ -49,12 +49,12 @@ if LAYOUT.exists():
         if missing: err('course home layout missing daily-plan ids: '+', '.join(sorted(missing)))
     except Exception as e: err('course home XML parse failed: '+str(e))
 
-if "versionName '5.4.0-native'" not in build or 'def defaultVersionCode = 88' not in build:
-    err('v5.4.0 version identity missing')
+if "versionName '5.4.1-native'" not in build or 'def defaultVersionCode = 89' not in build:
+    err('v5.4.1 version identity missing')
 if 'python3 tools/daily_smart_plan_quality_check.py' not in cm:
     err('Codemagic daily smart plan quality-check step missing')
-if 'v5.4.0' not in cm:
-    err('Codemagic workflow title is not v5.4.0')
+if 'v5.4.1' not in cm:
+    err('Codemagic workflow title is not v5.4.1')
 
 if errors:
     for e in errors: print('ERROR:',e)

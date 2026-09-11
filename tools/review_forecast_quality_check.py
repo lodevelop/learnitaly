@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 seven-day consolidation forecast and true adaptive new-word throttle checks."""
+"""v5.4.1 seven-day consolidation forecast and true adaptive new-word throttle checks."""
 from pathlib import Path
 import sys, xml.etree.ElementTree as ET
 
@@ -39,8 +39,8 @@ for marker in ['button_review_calendar','openReviewCalendar']:
     if marker not in course: err('course map consolidation-calendar entry missing '+marker)
 for marker in ['button_summary_forecast','ReviewForecastEngine','未来7天','openReviewCalendar']:
     if marker not in summary: err('daily summary forecast entry missing '+marker)
-for marker in ['openReviewCalendar','new CalendarFragment()','5.4.0-preupgrade']:
-    if marker not in main: err('MainActivity v5.4.0 forecast/upgrade marker missing '+marker)
+for marker in ['openReviewCalendar','new CalendarFragment()','5.4.1-preupgrade']:
+    if marker not in main: err('MainActivity v5.4.1 forecast/upgrade marker missing '+marker)
 if 'tomorrowScheduledWords' not in plan: err('DailySmartPlan missing tomorrowScheduledWords')
 if '明日已排' not in smart: err('daily smart plan look-ahead copy missing')
 
@@ -59,12 +59,12 @@ for layout_name,needed in {
         if needed-ids: err(layout_name+' missing ids: '+', '.join(sorted(needed-ids)))
     except Exception as e: err(layout_name+' XML parse failed: '+str(e))
 
-if "versionName '5.4.0-native'" not in build or 'def defaultVersionCode = 88' not in build:
-    err('v5.4.0 version identity missing')
+if "versionName '5.4.1-native'" not in build or 'def defaultVersionCode = 89' not in build:
+    err('v5.4.1 version identity missing')
 if 'python3 tools/review_forecast_quality_check.py' not in cm:
     err('Codemagic review forecast quality-check step missing')
-if 'v5.4.0' not in cm:
-    err('Codemagic workflow title is not v5.4.0')
+if 'v5.4.1' not in cm:
+    err('Codemagic workflow title is not v5.4.1')
 
 if errors:
     for e in errors: print('ERROR:',e)

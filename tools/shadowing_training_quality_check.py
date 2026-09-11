@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 Shadowing three-pass training-room integration gate."""
+"""v5.4.1 Shadowing three-pass training-room integration gate."""
 from pathlib import Path
 import sys
 R=Path(__file__).resolve().parents[1]
@@ -32,10 +32,10 @@ need(mastery,'"shadowing"','mastery passport speaking evidence')
 need(main,'openShadowing','main navigation')
 need(manifest,'android.permission.RECORD_AUDIO','microphone permission')
 need(manifest,'android.speech.RecognitionService','speech-recognition query')
-need(build,'def defaultVersionCode = 88','versionCode')
-need(build,"versionName '5.4.0-native'",'versionName')
-need(main,'5.4.0-preupgrade','pre-upgrade backup')
-need(cm,'v5.4.0','Codemagic version')
+need(build,'def defaultVersionCode = 89','versionCode')
+need(build,"versionName '5.4.1-native'",'versionName')
+need(main,'5.4.1-preupgrade','pre-upgrade backup')
+need(cm,'v5.4.1','Codemagic version')
 need(cm,'python3 tools/shadowing_training_quality_check.py','Codemagic Shadowing gate')
 if errors:
     for e in errors: print('ERROR:',e)

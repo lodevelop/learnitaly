@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 personal wrong-sentence prompt integrity gate."""
+"""v5.4.1 personal wrong-sentence prompt integrity gate."""
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 J=ROOT/'app/src/main/java/com/italiano2774/nativeapp'

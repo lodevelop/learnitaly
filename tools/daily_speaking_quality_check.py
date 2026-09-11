@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 daily five-sentence active-speaking integration gate (stdlib only)."""
+"""v5.4.1 daily five-sentence active-speaking integration gate (stdlib only)."""
 from pathlib import Path
 import json,sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -52,9 +52,9 @@ if '每日5句开口' not in summary or 'dailySpeakingStreak()' not in summary o
 for marker in ['o.put("dailySpeaking"','optJSONArray("dailySpeaking")','auxday_daily_speaking_att_','auxday_daily_speaking_cor_']:
     if marker not in store: err('daily speaking backup/streak history marker missing '+marker)
 
-if "versionName '5.4.0-native'" not in build or 'def defaultVersionCode = 88' not in build: err('v5.4.0 version identity missing')
-if 'v5.4.0' not in cm or 'python3 tools/daily_speaking_quality_check.py' not in cm: err('Codemagic v5.4.0 daily-speaking gate missing')
-if '5.4.0-preupgrade' not in main: err('v5.4.0 pre-upgrade backup marker missing')
+if "versionName '5.4.1-native'" not in build or 'def defaultVersionCode = 89' not in build: err('v5.4.1 version identity missing')
+if 'v5.4.1' not in cm or 'python3 tools/daily_speaking_quality_check.py' not in cm: err('Codemagic v5.4.1 daily-speaking gate missing')
+if '5.4.1-preupgrade' not in main: err('v5.4.1 pre-upgrade backup marker missing')
 
 if errors:
     for x in errors: print('ERROR:',x)

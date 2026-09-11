@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 beginner-first simple-home + progressive-unlock integration gate."""
+"""v5.4.1 beginner-first simple-home + progressive-unlock integration gate."""
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -42,14 +42,14 @@ for day in [2,3,4,5,7]:
 for token in ['switch_simple_home','homeSimpleMode()','setHomeSimpleMode']:
     need(settings if token!='switch_simple_home' else settings_xml,token,'Settings simple-home switch')
 need(onboarding,'setHomeSimpleMode(true)','Onboarding simple-home default')
-need(main,'5.4.0-preupgrade','v5.0 upgrade snapshot')
+need(main,'5.4.1-preupgrade','v5.0 upgrade snapshot')
 need(main,'终学意语_backup_v5_0.json','v5.0 backup filename')
-need(build,'def defaultVersionCode = 88','v5.0 versionCode')
-need(build,"versionName '5.4.0-native'",'v5.0 versionName')
-need(cm,'v5.4.0','Codemagic v5.0 identity')
+need(build,'def defaultVersionCode = 89','v5.0 versionCode')
+need(build,"versionName '5.4.1-native'",'v5.0 versionName')
+need(cm,'v5.4.1','Codemagic v5.0 identity')
 need(cm,'python3 tools/beginner_home_quality_check.py','Codemagic beginner-home gate')
 
 if errors:
     for e in errors: print('ERROR:',e)
     sys.exit(1)
-print('OK: v5.4.0 simple home, beginner 7-day guidance, progressive practice unlock, persistence and release wiring verified.')
+print('OK: v5.4.1 simple home, beginner 7-day guidance, progressive practice unlock, persistence and release wiring verified.')

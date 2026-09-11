@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 seven-active-day weekly practical exam and automatic next-week adjustment gate."""
+"""v5.4.1 seven-active-day weekly practical exam and automatic next-week adjustment gate."""
 from pathlib import Path
 import sys
 R=Path(__file__).resolve().parents[1]
@@ -33,7 +33,7 @@ for token in ['weeklyExamActiveDaysSinceLast','weeklyExamDue','weeklyAdjustmentA
     need(store,token,'weekly exam persistence')
 for token in ['weeklyExamDue','weekly_exam','weeklyFocusTask','周测补弱','if(weeklyExamDue&&budget>=20)','addUniqueByAction']:
     need(planner,token,'daily planner weekly integration')
-for token in ['openWeeklyExam','5.4.0-preupgrade','终学意语_backup_v5_0.json']:
+for token in ['openWeeklyExam','5.4.1-preupgrade','终学意语_backup_v5_0.json']:
     need(main,token,'main navigation/backup')
 need(course,'case "weekly_exam"','course daily-plan route')
 for token in ['text_week_report_exam','weeklyAdjustmentSummary','weeklyExamSkillScore','button_week_exam']:
@@ -45,9 +45,9 @@ need(practice,'button_simple_weekly_exam','practice entry')
 for token in ['button_summary_weekly_exam','weeklyExamDue','weeklyAdjustmentSummary']:
     need(summary,token,'daily summary weekly diagnosis')
 need(summary_layout,'button_summary_weekly_exam','daily summary weekly exam button')
-need(build,'def defaultVersionCode = 88','versionCode')
-need(build,"versionName '5.4.0-native'",'versionName')
-need(cm,'v5.4.0','Codemagic identity')
+need(build,'def defaultVersionCode = 89','versionCode')
+need(build,"versionName '5.4.1-native'",'versionName')
+need(cm,'v5.4.1','Codemagic identity')
 need(cm,'python3 tools/weekly_exam_quality_check.py','Codemagic weekly gate')
 if errors:
     for e in errors: print('ERROR:',e)

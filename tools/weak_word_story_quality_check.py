@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 personal weak-word micro-reading + contextual retrieval integration gate."""
+"""v5.4.1 personal weak-word micro-reading + contextual retrieval integration gate."""
 from pathlib import Path
 import re, sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -62,9 +62,9 @@ need(store,'"weak_story"','weak-story backup stats')
 need(store,'recordEmbeddedDimensionResults','single-schedule multi-dimension embedded update')
 if store.count('updateAdaptiveSchedule(id,dims,correct,responseMs)') < 2:
     errors.append('four-track adaptive schedule update methods appear incomplete')
-need(build,'def defaultVersionCode = 88','v5.4.0 versionCode')
-need(build,"versionName '5.4.0-native'",'v5.4.0 versionName')
-need(cm,'v5.4.0','Codemagic v4.7 identity')
+need(build,'def defaultVersionCode = 89','v5.4.1 versionCode')
+need(build,"versionName '5.4.1-native'",'v5.4.1 versionName')
+need(cm,'v5.4.1','Codemagic v4.7 identity')
 need(cm,'python3 tools/weak_word_story_quality_check.py','Codemagic weak-story gate')
 
 # Prevent an accidental regression to network/generative story creation inside this engine/fragment.

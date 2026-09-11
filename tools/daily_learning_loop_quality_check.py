@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""v5.4.0 daily recovery/close-loop integration checks (stdlib only)."""
+"""v5.4.1 daily recovery/close-loop integration checks (stdlib only)."""
 from pathlib import Path
 import sys, xml.etree.ElementTree as ET
 
@@ -39,12 +39,12 @@ if layout.exists():
     except Exception as e: err('daily summary XML parse failed: '+str(e))
 else: err('missing fragment_daily_summary.xml')
 
-if "versionName '5.4.0-native'" not in build or 'def defaultVersionCode = 88' not in build:
-    err('v5.4.0 version identity missing')
+if "versionName '5.4.1-native'" not in build or 'def defaultVersionCode = 89' not in build:
+    err('v5.4.1 version identity missing')
 if 'python3 tools/daily_learning_loop_quality_check.py' not in cm:
     err('Codemagic daily learning-loop check step missing')
-if 'v5.4.0' not in cm:
-    err('Codemagic workflow title is not v5.4.0')
+if 'v5.4.1' not in cm:
+    err('Codemagic workflow title is not v5.4.1')
 
 if errors:
     for e in errors: print('ERROR:',e)
