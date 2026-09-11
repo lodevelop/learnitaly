@@ -1,0 +1,48 @@
+终学意语 v5.2.0 全课程去重与整句双语修复版 开发与自检报告
+
+一、本次实机问题
+1. v5.1 English 模式在课程页、今日计划、练习中心出现半中半英拼接，例如：今days、unitComplete、个人错sentences本、Start下一项、No.36unit。
+2. 需要继续从运行时实际出题层面验证 98 单元课程是否存在异常高频、连续强化、跨单元目标和歧义干扰项。
+
+二、UI 修复
+- 主要动态页面改为整句语言模板，不再依赖碎片级替换。
+- UiEnglishTranslator 增加 whole-sentence fallback：替换后如果仍含中文，返回完整原句，禁止输出混拼句。
+- CourseHome / CourseMap / CourseLesson / PracticeHub / BeginnerGuide 等主要入口直接生成完整 English 动态文案。
+- 新增 ui_language_integrity_quality_check.py，并把真实截图回归模式写入自动测试。
+
+三、课程分布审计
+- 固定单元：98
+- 课程词：2774
+- 唯一静态归属：2774 / 2774
+- 一次完整课程正式目标出现次数：1~2 次
+- 1次：1353词
+- 2次：1421词
+- >=3次：0词
+- 正常课当前单元焦点占比下限：75%
+- 挑战前同单元强化上限：每词1次
+- 跨单元固定课程目标：0
+- 单元挑战优先补前面练得较少的本单元词
+- 中英文选择题干扰项均执行同单元意义冲突检查
+
+四、兼容
+- versionCode 84
+- versionName 5.2.0-native
+- applicationId com.italiano2774.nativeapp
+- Backup v32
+- Room v6
+- 固定签名 zhongxue_release
+
+五、最终门禁
+- Java source literal check：PASS（193 Java）
+- UI language integrity：PASS
+- Bilingual support：PASS（2774/2774中英释义）
+- Course distribution：PASS
+- Course unit isolation：PASS
+- Preflight：PASS（2774词 / 2774音频 / 95 XML / 98单元）
+- Regression：PASS
+- Signing config：PASS
+- Strict Release Gate：PASS（1338资源引用 / 29条Room migration SQL模拟 / 50个Codemagic shell blocks）
+- 词义、全词库重译、例句、十篇文章、听说、12场景会话、微语法、每日计划、周测、Shadowing、弱词短文、36关生活任务、四维遗忘模型等历史门禁：PASS
+
+六、构建说明
+当前执行环境未承诺具备 Android SDK / Gradle Wrapper，因此本报告只声明源码、资源、数据和发布门禁通过；正式 app-release.apk 仍由 Codemagic 使用固定签名生成。

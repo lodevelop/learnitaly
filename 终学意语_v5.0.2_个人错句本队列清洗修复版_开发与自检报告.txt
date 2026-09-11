@@ -1,0 +1,41 @@
+终学意语 v5.0.2 个人错句本队列清洗修复版 开发与自检报告
+
+问题
+----
+实机截图：个人错句本显示“拼写错误 · course_v334”“unit=B1-U36,lesson=7”“当时没有完整作答”，待修复 1143 条。
+
+定位
+----
+1. LearningStateDao 旧查询只排除了 mode=grammar，几乎所有 expected 非空错误都会进入错句本。
+2. ProgressStore.recordErrorCause 同样把几乎所有非 grammar 错误增加 pending_error_repairs。
+3. CourseLessonFragment 的普通单词题错误 mode 为 course_v334，也被当成需要“重写句子”的真实输出。
+4. 课程文本输入题允许空白直接判错，进一步产生 actual 为空的垃圾记录。
+5. ListeningSpeaking / WeeklyExam 的词汇题和主动输出共用 mode，无法稳定区分哪些记录应该进入错句本。
+
+修复
+----
+- 新增 ErrorEvidencePolicy，只允许真正的句子输出模式进入个人错句本。
+- DAO 白名单过滤新旧记录；历史 course_v334、普通词汇/选择题/语法类错误自动从待修复队列排除。
+- ProgressStore 只有 ErrorEvidencePolicy.isRepairEligible=true 才增加 pending_error_repairs。
+- MainActivity 启动立即异步重新统计待修复数量，并在升级备份/迁移后再次校准。
+- ErrorEvidenceRepairFragment 使用人类可读来源和自然的“未完成表达”提示，不暴露内部 mode / unit 技术标识。
+- CourseLessonFragment 空白输入不再判错；课程错误 mode 改为 course，仅保留分析和词汇复习。
+- 听说主动输出 mode 改为 listen_speak_output；周测口语/真实使用改为 weekly_exam_output。
+- 强化 error_evidence_quality_check.py 并继续接入 Codemagic / Preflight / Regression / Strict Release Gate。
+
+兼容
+----
+- 不清空学习数据。
+- Room 保持 v6。
+- backup 保持 v31。
+- applicationId 保持 com.italiano2774.nativeapp。
+- 固定签名保持 zhongxue_release。
+
+版本
+----
+versionCode 82
+versionName 5.0.2-native
+backup version 31
+Room v6
+applicationId com.italiano2774.nativeapp
+signing zhongxue_release

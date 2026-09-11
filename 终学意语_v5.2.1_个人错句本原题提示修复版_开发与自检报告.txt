@@ -1,0 +1,63 @@
+终学意语 v5.2.1 个人错句本原题提示修复版
+开发与自检报告
+
+一、真实设备问题
+v5.2.0 的个人错句本已经把历史脏队列从 1143 条清理到真正的句子输出错误，但升级前部分周测/口语记录只显示：
+- 当时没有识别到完整的意大利语表达
+- 周测口语 · 匹配=0 · 漏词 4 个
+却没有显示当时原题/中文提示，学习者无法独立重写。
+
+二、本版修复
+1. 个人错句卡新增“原题 / 提示”区域。
+2. 新产生的真实句子错误统一把原题写入现有 detail 字段，不增加 Room schema。
+3. 已覆盖：
+   - 每周实战口语/真实使用
+   - 每日5句
+   - Shadowing
+   - 听说训练开口
+   - 听力课程
+   - 句子听写
+   - 精听听写
+   - 自由会话
+   - 真实写作
+   - 初/中/高级生活场景口语
+4. 旧记录自动反查：
+   - 430 核心句
+   - 90 听力句
+   - 120 生活场景短句
+   - 60 轮情景会话
+   - 句子听写/救急语料
+5. 旧真实写作记录从历史 detail 恢复题目。
+6. 无法可靠恢复原题的极少数旧记录自动从“必须重写”队列归档，不会要求用户盲猜，也不会因此提高任何掌握度。
+7. 新增 error_prompt_integrity_quality_check.py 并接入 Codemagic / Preflight / Strict Release Gate。
+
+三、版本与兼容
+versionCode: 85
+versionName: 5.2.1-native
+applicationId: com.italiano2774.nativeapp
+Backup schema: 32
+Room database: 6
+固定签名: zhongxue_release
+覆盖升级快照: 5.2.1-preupgrade
+
+四、最终门禁
+- Java source literal check: PASS (194 Java)
+- Prompt source coverage: PASS (430 core / 90 listening / 120 scenario phrases / 60 dialogue turns)
+- Error prompt integrity: PASS
+- Error evidence queue: PASS
+- Preflight: PASS
+- Regression: PASS
+- Signing config: PASS
+- Strict Release Gate: PASS
+- 2774词义/语义/重译: PASS
+- 1718例句: PASS
+- 98单元与2774词唯一归属: PASS
+- 全课程分布: PASS (正式目标最多2次，无3次以上异常高频)
+- 10篇2000词文章/269组逐句: PASS
+- 27微语法: PASS
+- 12场景60轮会话: PASS
+- 周测/Shadowing/弱词短文/36关任务/四维遗忘/中英双语: PASS
+
+五、构建说明
+当前运行环境没有完整 Android SDK / Gradle Wrapper，因此未虚假声称本地 APK 已编译通过。
+项目已配置 Codemagic 创建 Gradle Wrapper、运行全部门禁并使用 zhongxue_release 固定签名生成正式 app-release.apk。
